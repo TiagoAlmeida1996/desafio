@@ -12,13 +12,14 @@ export default () => {
     const [passwordField, setPasswordField] = useState('')
 
     const handleSignClick = async () => {
+
         if (emailField != '' && passwordField != '') {
-            let data = await Api.signIn(emailField, passwordField);
+            const data = await Api.signIn(emailField, passwordField);
             console.log(data)
             if (data.accessToken) {
                 await AsyncStorage.setItem('token', data.accessToken);
                 navigation.reset({
-                    routes: [{ name: 'Home' }]
+                    routes: [{ name: 'MainTab' }]
                 });
             } else {
                 alert('Email ou password errados!')
