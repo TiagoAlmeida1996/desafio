@@ -1,10 +1,32 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TextInput, Button, SafeAreaView } from 'react-native';
 import FlatButton from './button';
+import Api from '../../services/Api'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useNavigation } from '@react-navigation/core';
 
 export default () => {
+    const navigation = useNavigation();
+
     const [emailField, setEmailField] = useState('')
     const [passwordField, setPasswordField] = useState('')
+
+    const handleSignClick = async () => {
+        if (emailField != '' && passwordField != '') {
+            let data = await Api.signIn(emailField, passwordField);
+            console.log(data)
+            if (data.accessToken) {
+                await AsyncStorage.setItem('token', data.accessToken);
+                navigation.reset({
+                    routes: [{ name: 'Home' }]
+                });
+            } else {
+                alert('Email ou password errados!')
+            }
+        } else {
+            alert("Preencha os campos!")
+        }
+    }
     return (
         <View style={styles.container}>
             <Text style={styles.text}>EMPRESA-X</Text>
@@ -25,7 +47,7 @@ export default () => {
                     value={passwordField}
                     onChangeText={t => setPasswordField(t)}
                 />
-                <FlatButton text="Login" />
+                <FlatButton text="Login" onPress={handleSignClick} />
             </SafeAreaView>
         </View>
 
