@@ -29,5 +29,16 @@ export default {
         } catch (error) {
             console.error(error)
         }
+    },
+    getProducts: async () => {
+        const req = await fetch(`${BASE_API}/products`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+        });
+        const data = await req.json();
+        return data;
     }
 }
