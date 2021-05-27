@@ -55,13 +55,18 @@ export default () => {
 
     return (
         <SafeAreaView>
-            <TextInput
-                placeholder="Procurar"
-                placeholderTextColor='#888'
-                style={styles.input}
-                value={search}
-                onChangeText={(text) => searchFilter(text)}
-            />
+            <View style={{
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                <TextInput
+                    placeholder="Procurar"
+                    placeholderTextColor='#888'
+                    style={styles.input}
+                    value={search}
+                    onChangeText={(text) => searchFilter(text)}
+                />
+            </View>
             <FlatList
                 data={products}
                 keyExtractor={(item, index) => index.toString()}
@@ -90,6 +95,10 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: '#2a2e4a',
         height: 50,
+        alignContent: 'center',
+        borderRadius: 8,
+        marginTop: 10,
+        width: '95%',
         fontSize: 18,
         padding: 10,
         color: 'white',
