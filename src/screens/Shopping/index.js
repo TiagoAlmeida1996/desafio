@@ -18,7 +18,7 @@ export default class Cart extends Component {
     componentDidMount() {
         AsyncStorage.getItem('cart').then((cart) => {
             if (cart !== null) {
-                // We have data!!
+
                 const cartproduct = JSON.parse(cart)
                 this.setState({ dataCart: cartproduct })
             }
@@ -47,6 +47,16 @@ export default class Cart extends Component {
             this.setState({ dataCart: dataCar })
         }
     }
+    onLoadTotal() {
+        var total = 0
+        const cart = this.state.dataCart
+        for (var i = 0; i < cart.length; i++) {
+            total = total + (cart[i].price * cart[i].quantity)
+        }
+        return total
+
+    }
+
 
 
 
@@ -70,17 +80,17 @@ export default class Cart extends Component {
                                         <View style={{ flex: 1, backgroundColor: 'trangraysparent', padding: 10, justifyContent: "space-between" }}>
                                             <View>
                                                 <Text style={{ fontWeight: "bold", fontSize: 20 }}>{item.product.nome}</Text>
-                                                <Text>Lorem Ipsum de food</Text>
+                                                <Text>{item.product.descricao}</Text>
                                             </View>
                                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                                <Text style={{ fontWeight: 'bold', color: "#2a2e4a", fontSize: 20 }}>${item.price * item.quantity}</Text>
+                                                <Text style={{ fontWeight: 'bold', color: "#2a2e4a", fontSize: 20 }}>{item.price * item.quantity}€</Text>
                                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                                     <TouchableOpacity onPress={() => this.onChangeQual(i, false)}>
-                                                        <Icon name="ios-remove-circle" size={35} color={"#2a2e4a"} />
+                                                        <Icon name="minus-circle" size={35} color={"#2a2e4a"} />
                                                     </TouchableOpacity>
                                                     <Text style={{ paddingHorizontal: 8, fontWeight: 'bold', fontSize: 18 }}>{item.quantity}</Text>
                                                     <TouchableOpacity onPress={() => this.onChangeQual(i, true)}>
-                                                        <Icon name="ios-add-circle" size={35} color={"#2a2e4a"} />
+                                                        <Icon name="plus-circle" size={35} color={"#2a2e4a"} />
                                                     </TouchableOpacity>
                                                 </View>
                                             </View>
@@ -91,6 +101,8 @@ export default class Cart extends Component {
                         }
 
                         <View style={{ height: 20 }} />
+
+                        <Text style={{ fontSize: 28, color: '#2a2e4a', textAlign: 'center' }}>{this.onLoadTotal()}€</Text>
 
                         <TouchableOpacity style={{
                             backgroundColor: "#2a2e4a",
@@ -105,7 +117,7 @@ export default class Cart extends Component {
                                 fontWeight: "bold",
                                 color: 'white'
                             }}>
-                                CHECKOUT
+                                PAGAR
                   </Text>
                         </TouchableOpacity>
 
