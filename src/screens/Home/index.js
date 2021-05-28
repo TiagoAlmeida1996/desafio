@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 
+
 export default () => {
     const [products, setProducts] = useState([]);
     const [filterdProducts, setFilterProducts] = useState([]);
@@ -85,6 +86,7 @@ export default () => {
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
+
                 <TextInput
                     placeholder="Procurar"
                     placeholderTextColor='#888'
@@ -118,7 +120,7 @@ export default () => {
                                     borderRadius: 5,
                                     padding: 4
                                 }}>
-                                <Text style={{ fontSize: 14, color: "white", fontWeight: "bold", justifyContent: "center" }}>Comprar</Text>
+                                <Text style={{ fontSize: 18, color: "white", fontWeight: "bold", justifyContent: "center" }}>Comprar</Text>
                                 <View style={{ width: 10 }} />
 
                             </TouchableOpacity>
@@ -151,10 +153,10 @@ const styles = StyleSheet.create({
         textShadowOffset: { width: 0, height: 2 },
         shadowRadius: 8,
         elevation: 5,
-        borderRadius: 10,
+        borderRadius: 5,
         backgroundColor: 'white',
         height: 300,
-        margin: 20
+        margin: 30
     },
     image: {
         width: '100%',
@@ -173,7 +175,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '35%',
+        height: '25%',
         paddingHorizontal: 20
     },
     details: {
