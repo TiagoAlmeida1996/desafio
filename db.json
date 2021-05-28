@@ -17,7 +17,7 @@
       "nome": "Pulseira Aspen",
       "imagem":"https://www.twobrothers-store.com/wp-content/uploads/2020/06/pulseira-homem-twobrothers-aspen-600x600.jpg",
       "descricao": "Um acessório elegante e irreverente, o complemento perfeito para o seu look.",
-      "preco": 18.90,
+      "preco": 18,
       "quantidade": 2
     },
     {
@@ -25,7 +25,7 @@
       "nome": "Pulseira Albuquerque",
       "imagem":"https://www.twobrothers-store.com/wp-content/uploads/2021/05/Pulseira-Homem-A%C3%A7o-Inoxid%C3%A1vel-com-Pedras-Twobrothers-Pulseira-Albuquerque-600x600.jpg",
       "descricao": "Um acessório elegante e irreverente, o complemento perfeito para o seu look.",
-      "preco": 16.90,
+      "preco": 16,
       "quantidade": 2
     },
     {
@@ -33,7 +33,7 @@
       "nome": "Pulseira Detroit",
       "imagem":"https://www.twobrothers-store.com/wp-content/uploads/2021/05/Pulseira-Homem-A%C3%A7o-Inoxid%C3%A1vel-com-Pedras-Twobrothers-Pulseira-Detroit-600x600.jpg",
       "descricao": "Um acessório elegante e irreverente, o complemento perfeito para o seu look.",
-      "preco": 22.90,
+      "preco": 22,
       "quantidade": 2
     }
   ]
