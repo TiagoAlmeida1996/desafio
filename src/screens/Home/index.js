@@ -1,8 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList, Button, StyleSheet, Image, TextInput } from 'react-native';
+import { Text, View, FlatList, Button, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Api from '../../services/Api'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 
 export default () => {
@@ -38,6 +40,30 @@ export default () => {
             setSearch(text)
 
         }
+    }
+
+    const onClickAddcart = (data) => {
+        const itemcart = {
+            product: data,
+            quantity: 1,
+            price: data.preco
+        }
+        AsyncStorage.getItem('cart').then((datacart) => {
+            if (datacart != null) {
+                const cart = JSON.parse(datacart)
+                cart.push(itemcart)
+                AsyncStorage.setItem('cart', JSON.stringify(cart))
+            }
+            else {
+                const cart = []
+                cart.push(itemcart)
+                AsyncStorage.setItem('cart', JSON.stringify(cart))
+            }
+            alert('Add successful')
+        })
+            .catch((error) => {
+                alert(error)
+            })
     }
 
 
@@ -81,7 +107,21 @@ export default () => {
                         </View>
 
                         <View style={styles.actions}>
-                            <Button color='#2a2e4a' title="Adicionar Carrinho" />
+                            <TouchableOpacity
+                                onPress={() => onClickAddcart(item)}
+                                style={{
+                                    width: '30%',
+                                    backgroundColor: '#2a2e4a',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContent: "center",
+                                    borderRadius: 5,
+                                    padding: 4
+                                }}>
+                                <Text style={{ fontSize: 14, color: "white", fontWeight: "bold", justifyContent: "center" }}>Comprar</Text>
+                                <View style={{ width: 10 }} />
+
+                            </TouchableOpacity>
                         </View>
                     </View>
 
