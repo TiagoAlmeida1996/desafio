@@ -33,7 +33,7 @@ export default () => (
                     />
                     <Text
                         style={{ color: focused ? '#ffff' : '#767886', fontSize: 12 }}>
-                        Home
+                        Produtos
                     </Text>
                 </View>
             ),
@@ -54,17 +54,17 @@ export default () => (
                     />
                     <Text
                         style={{ color: focused ? '#ffff' : '#767886', fontSize: 12 }}>
-                        Shopping Cart
+                        Carrinho Compras
                     </Text>
                 </View>
             ),
         }}
         />
-        <Tab.Screen name="Search" component={Search} options={{
+        <Tab.Screen name="Sair" component={Search} options={{
             tabBarIcon: ({ focused }) => (
                 <View style={{ alignItems: 'center', justifyContent: 'center', top: 2 }}>
                     <Image
-                        source={require('../assets/search.png')}
+                        source={require('../assets/exit.png')}
                         resizeMode='contain'
                         style={{
                             width: 25,
@@ -75,7 +75,7 @@ export default () => (
                     />
                     <Text
                         style={{ color: focused ? '#ffff' : '#767886', fontSize: 12 }}>
-                        Search
+                        Sair
                     </Text>
                 </View>
             ),
